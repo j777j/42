@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "stdlib.h": "c",
+        "operations.h": "c",
+        "push_swap.h": "c",
+        "cstdlib": "c"
+    }
+}

@@ -1,0 +1,4 @@
+This is the first line of the input.
+This line contains 'test'.
+Another line here.
+Final test line.

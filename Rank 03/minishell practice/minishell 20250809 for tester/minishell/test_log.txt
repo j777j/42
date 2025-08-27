@@ -1,0 +1,56 @@
+---
+Test: Simple command: echo
+Command: echo 'hello simple command'
+---
+---
+Test: Simple command with absolute path
+Command: /bin/echo hello world
+---
+---
+Test: Pipe: echo | grep
+Command: echo 'a\nb\nc' | grep 'b'
+---
+---
+Test: Pipe: cat | grep | sort
+Command: cat Makefile | grep 'all' | sort
+---
+---
+Test: Pipe: echo | wc
+Command: echo 'a b c' | wc -w
+---
+---
+Test: Redirection: >
+Command: echo 'hello' > outfile
+---
+---
+Test: Redirection: <
+Command: cat < outfile
+---
+---
+Test: Redirection: < with command
+Command: grep 'hello' < outfile
+---
+---
+Test: Redirection: >>
+Command: echo ' world' >> outfile
+---
+---
+Test: Verify >> redirection
+Command: cat outfile
+---
+---
+Test: Cleanup outfile
+Command: rm outfile
+---
+---
+Test: Built-in: echo
+Command: echo 'testing echo'
+---
+---
+Test: Built-in: pwd
+Command: pwd
+---
+---
+Test: Variable expansion
+Command: export TEST_VAR='hello'; echo $TEST_VAR
+---

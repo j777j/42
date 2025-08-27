@@ -1,0 +1,1 @@
+Testing command string: export MY_VAR=is_set; env | grep MY_VAR; unset MY_VAR; env | grep MY_VAR; ls /no/such/dir; echo 0; ls / > /dev/null; echo 0

@@ -1,0 +1,16 @@
+# Executable
+minishell
+
+# Object files
+*.o
+
+# Dependency files
+*.d
+
+# Swap files
+*~
+*.swp
+
+# Libft
+libft/libft.a
+libft/*.o

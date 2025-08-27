@@ -1,0 +1,53 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init2.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: juwang < juwang@student.42tokyo.jp>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/20 04:51:54 by juwang            #+#    #+#             */
+/*   Updated: 2025/07/20 06:54:26 by juwang           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "so_long.h"
+
+void	init_game(t_game *game, char *map_file)
+{
+	game->mlx = NULL;
+	game->win = NULL;
+	game->map = NULL;
+	game->width = 0;
+	game->height = 0;
+	game->collectibles = 0;
+	game->player_x = 0;
+	game->player_y = 0;
+	game->moves = 0;
+	game->enemies = NULL;
+	game->enemy_count = 0;
+	load_map(game, map_file);
+	check_map(game);
+}
+
+void	init_mlx(t_game *game)
+{
+	game->mlx = mlx_init();
+	if (!game->mlx)
+	{
+		ft_printf("Error: mlx_init failed\n");
+		exit_game(game, 1);
+	}
+	game->win = mlx_new_window(game->mlx, game->width * TILE_SIZE, game->height
+			* TILE_SIZE, "so_long");
+	if (!game->win)
+	{
+		ft_printf("Error: mlx_new_window failed\n");
+		exit_game(game, 1);
+	}
+	game->buffer.ptr = mlx_new_image(game->mlx, game->width * TILE_SIZE,
+			game->height * TILE_SIZE);
+	if (!game->buffer.ptr)
+		exit_game(game, 1);
+	game->buffer.addr = mlx_get_data_addr(game->buffer.ptr, &game->buffer.bpp,
+			&game->buffer.line_len, &game->buffer.endian);
+}
